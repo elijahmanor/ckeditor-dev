@@ -26,6 +26,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				document.getElementById( 'readOnlyOn' ).style.display = this.readOnly ? 'none' : '';
 				document.getElementById( 'readOnlyOff' ).style.display = this.readOnly ? '' : 'none';
 			});
+
+			var events = [ "afterCommandExec", "afterSetData", "afterUndoImage", "ariaWidget", "autoGrow", "beforeCommandExec", "beforeGetData", "beforeModeUnload", "beforeSetMode", "beforeUndoImage", "blur", "configLoaded", "contentDirChanged", "contentDom", "contentDomUnload", "customConfigLoaded", "dataReady", "destroy", "dialogHide", "dialogShow", "dirChanged", "elementsPathUpdate", "focus", "getData", "getSnapshop", "insertElement", "insertHtml", "insertText", "instanceReady", "key", "langLoaded", "loadSnapshot", "lockSnapshot", "maximize", "menuShow", "mode", "paste", "pasteDialog", "pasteDialogCommit", "pluginsLoaded", "readOnly", "removeFormatCleanup", "resize", "saveSnapshot", "selectionChange", "setData", "template", "unlockSnapshot", "updateSnapshot" ], i, length;
+
+			for ( i = 0, length = events.length; i < length; i++ ) {
+				editor.on( events[ i ], function( e ) {
+					console.log( "An event has been fired", e.name, e.data );
+				});
+			}
 		});
 
 		function toggleReadOnly( isReadOnly ) {
